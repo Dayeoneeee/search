@@ -7,6 +7,8 @@ import jakarta.persistence.EntityListeners;
 import jakarta.persistence.MappedSuperclass;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
@@ -26,8 +28,11 @@ import java.time.LocalDateTime;
 @EntityListeners(AuditingEntityListener.class)
 public abstract class BaseEntity {   //변경없이 사용만
     @Column(name = "regdate", nullable = false, updatable = false)
+    @CreatedDate
     private LocalDateTime regdate;
+
     @Column(name = "moddate")
+    @LastModifiedDate
     private LocalDateTime moddate;
     //변수를 처리하는 함수를 사용자가 작성
     //변수에 변화가 생길 때 수정시간이 오래 걸린다. 실수로 오류발생
