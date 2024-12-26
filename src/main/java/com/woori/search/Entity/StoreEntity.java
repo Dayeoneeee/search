@@ -17,10 +17,8 @@ import lombok.*;
         sequenceName = "store_seq", //필드명
         initialValue = 1,   //초기값
         allocationSize = 1  //할당값(증가값)
-
 )
 public class StoreEntity extends BaseEntity{
-
     @Id //기본키
     //자동화 처리
     //GenerationType.AUTO : 자동으로 타입을 설정
@@ -31,7 +29,7 @@ public class StoreEntity extends BaseEntity{
     @Column(name = "idx", nullable = false) //생략불가능
     private Integer idx;
     //필드명은 가능하면 소문자로 구성
-    @Column(name = "storename", length = 45)
+    @Column(name = "storename", length = 45)    //nullable 생략처리
     private String storeName;
     @Column(name = "storeid", length = 45)
     private String storeId;

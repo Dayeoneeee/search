@@ -24,7 +24,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.Map;
 
-
 @Controller
 @RequiredArgsConstructor
 @Log    //확인이 필요한 부분에 기재해서, 동작을 확인(준비, 입력, 처리, 출력)
@@ -47,6 +46,7 @@ public class StoreController {
                                     RedirectAttributes redirectAttributes) {
         log.info(idx+"로 요청");
         Boolean result = storeService.storeDelete(idx);
+
         log.info("삭제 처리 후 검증");
         //결과 처리
         if (result) {
@@ -94,7 +94,7 @@ public class StoreController {
     public String storeInsertProc(@Valid @ModelAttribute StoreDTO storeDTO,
                                     BindingResult bindingResult,
                                     RedirectAttributes redirectAttributes
-        ){
+                                    ){
         //HTML->DTO검증->서비스에서 데이터베이스 처리->결과->페이지 이동
         //검증의 유효성판단은 서비스 전에 작업
         if (bindingResult.hasErrors()) {    //검증처리시 오류가 발생하였다면
@@ -110,8 +110,10 @@ public class StoreController {
             redirectAttributes.addFlashAttribute("message",
                     "저장을 하였습니다.");
         } else {    //저장을 실패했으면
-            redirectAttributes.addFlashAttribute("message",
-                    "저장을 실패 하였습니다.");
+            redirectAttributes.addFlashAttribute(
+                    "message",
+                    "저장을 실패 하였습니다."
+            );
         }
 
         log.info("storeList로 맵핑 요청");
@@ -132,7 +134,7 @@ public class StoreController {
 
         log.info("결과 데이터 검증");
         if (read != null) { //수정할 데이터가 존재하면
-            //수정폼:수정시 수정할 DTO를 전달하므로 검증에 필요한 추가 작업은 없다.
+            //수정폼 : 수정시 수정할 DTO를 전달하므로 검증에 필요한 추가 작업은 없다.
             model.addAttribute("data", read);
 
             log.info("정상적 처리면 수정폼으로 이동");

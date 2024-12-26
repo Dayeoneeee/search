@@ -45,14 +45,14 @@
                     </tr>
                     </tbody>
                 </table>
-                <!--검색 기능(type, keyword)/추가버튼(/storeInsert)-->
+                <!--검색 기능(type, keyword)-페이지는 기본 1페이지부터 시작 /추가버튼(/storeInsert)-->
                 <form th:action="@{/storeList}" method="get">
                     <div class="row"> <!--틀-->
                         <div class="col-6">
                             <div class="input-group mb-3">
                                 <select class="form-select" name="type"> <!--type-->
                                     <option th:selected="${type==null}"></option>
-                                    <option value="0" th:selected="${type=='0'}">전체</option>
+                                    <option value="0" th:selected="${type=='0'}">전체</option> <!--검색 후 선택값으로 설정-->
                                     <option value="1" th:selected="${type=='1'}">총판명</option>
                                     <option value="2" th:selected="${type=='2'}">총판ID</option>
                                     <option value="3" th:selected="${type=='3'}">총판장ID</option>
@@ -70,6 +70,7 @@
                         </div>
                     </div>
                 </form>
+
                 <!--페이지 번호 처리-->
                 <div class="d-flex justify-content-center">
                     <ul class="pagination">
@@ -77,6 +78,7 @@
                             <a class="page-link" th:href="@{storeList(page=${prevPage}, type=${type}, keyword=${keyword})}">이전</a>
                         </li>
                         <span th:each="page:${#numbers.sequence(startPage, endPage, 1)}"> <!--해당페이지번호 반복-->
+
                         <li class="page-item" th:class="${page==currentPage}?'active':''"> <!--현재위치면 활성화-->
                             <a class="page-link" th:href="@{storeList(page=${page}, type=${type}, keyword=${keyword})}" th:text="${page}">1</a>
                         </li>

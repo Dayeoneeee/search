@@ -4,20 +4,21 @@ package com.woori.search.DTO;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
 import java.time.LocalDateTime;
 
 @Getter @Setter
-@AllArgsConstructor @NoArgsConstructor
-@ToString @Builder
+
+@ToString
 public class StoreDTO {
     @Schema(description = "일련번호", example = "1")
     private Integer idx;
 
     @Schema(description = "총판이름", example = "ggg호텔")
-    @NotBlank(message = "총판이름은 생략할 수 없습니다.")
+    @NotEmpty(message = "총판이름은 생략할 수 없습니다.")
     private String storeName;
 
     @Schema(description = "총판ID", example = "master")

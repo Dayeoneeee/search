@@ -123,7 +123,7 @@ public class StoreService {
                 storeEntities = storeRepository.findByStoreIdContaining(keyword, storePage);
                 //storeEntities = storeRepository.searchStoreId(keyword, storePage);
             } else if (type.equals("3")){ //총판장ID로 검색할 때
-                storeEntities = storeRepository.findByStoreChiefContaining(keyword, storePage);
+                storeEntities = storeRepository.findByStoreChiefIdContaining(keyword, storePage);
                 //storeEntities = storeRepository.searchStoreChiefId(keyword, storePage);
             } else if (type.equals("4")){ //총판장명으로 검색할 때
             storeEntities = storeRepository.findByStoreChiefContaining(keyword, storePage);

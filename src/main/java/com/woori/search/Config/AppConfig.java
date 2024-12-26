@@ -1,3 +1,4 @@
+//5. 사용자 메소드를 빈에 등록
 package com.woori.search.Config;
 
 import org.modelmapper.ModelMapper;
